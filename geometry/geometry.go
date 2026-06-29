@@ -35,8 +35,8 @@ func (p Point) DistanceTo(other Point) float64 {
 	distanceX := other.X - p.X
 	distanceY := other.Y - p.Y
 
-	distanceXSquare := math.Pow(distanceX, 2)
-	distanceYSquare := math.Pow(distanceY, 2)
+	distanceXSquare := distanceX * distanceX
+	distanceYSquare := distanceY * distanceY
 
 	distance := math.Sqrt(float64(distanceXSquare + distanceYSquare))
 
@@ -63,13 +63,15 @@ func (p Polygon) Area() float64 {
 
 	n := len(p.PointsArr)
 
-	if n < 3 {
+	const minPolygonPoints = 3
+
+	if n < minPolygonPoints {
 		return 0
 	}
 
 	sum := 0.0
 
-	for i := 0; i < n; i++ {
+	for i := range n {
 
 		current := p.PointsArr[i]
 		next := p.PointsArr[(i+1)%n]
@@ -89,7 +91,7 @@ func (p Polygon) Perimeter() float64 {
 
 	sum := 0.0
 
-	for i := 0; i < n; i++ {
+	for i := range n {
 		current := p.PointsArr[i]
 		next := p.PointsArr[(i+1)%n]
 		sum += current.DistanceTo(next)
@@ -115,4 +117,5 @@ func (p Polygon) Contains(point Point) bool {
 
 	return inside
 }
+
 
