@@ -1,7 +1,7 @@
 package geometry_test
 
 import (
-	"geometry/geometry"
+	"go_practice/geometry"
 	"testing"
 
 	"github.com/stretchr/testify/assert"

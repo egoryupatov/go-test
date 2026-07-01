@@ -3,7 +3,7 @@ package main
 import (
 	"flag"
 	"fmt"
-	"geometry/geometry"
+	"go_practice/geometry"
 	"strconv"
 	"strings"
 )
